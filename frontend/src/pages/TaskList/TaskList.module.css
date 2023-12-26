@@ -5,7 +5,7 @@
 }
 
 .pageCnt .filters {
-    height: max-content;
+  height: max-content;
   padding: 0.8rem;
   border: 1px solid grey;
 
@@ -13,8 +13,8 @@
   flex-direction: column;
 }
 
-.filters label{
-    cursor: pointer;
+.filters label {
+  cursor: pointer;
 }
 
 .pageCnt .allTasks {
@@ -26,10 +26,33 @@
   gap: 20px;
 }
 
+.allTasks .pagination {
+  width: 200px;
 
-.allTasks .pagination{
-    width: 200px;
+  display: flex;
+  justify-content: space-around;
+}
 
-    display: flex;
-    justify-content: space-around;
+/* Responsive design */
+@media screen and (max-width: 550px) {
+  .pageCnt {
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem;
+  }
+
+  .pageCnt .filters {
+    flex-direction: row;
+    gap: 60px;
+  }
+
+  .pageCnt .allTasks {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .pageCnt {
+    gap: 1.5rem;
+  }
 }

@@ -11,6 +11,7 @@ import {
   MdOutlineCheckBoxOutlineBlank,
 } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
+import { TbPencil } from "react-icons/tb";
 import styles from "./TaskDetails.module.css";
 
 const TaskDetails = () => {
@@ -50,6 +51,7 @@ const TaskDetails = () => {
   const handleUpdateTask = async (putdata) => {
     try {
       const { data } = await axios.put(`${updateTaskRoute}/${taskid}`, putdata);
+      setTask(data);
     } catch (error) {
       console.log(error);
     }
@@ -66,23 +68,35 @@ const TaskDetails = () => {
     <div className={styles.cnt}>
       <div className={styles.details}>
         <div className={styles.taskName}>
-          <input
-            className={styles.heading}
-            value={task?.name}
-            onChange={(e) => setTask((p) => ({ ...p, name: e.target.value }))}
-          />
-          {task.isDone ? (
-            <MdOutlineCheckBox />
-          ) : (
-            <MdOutlineCheckBoxOutlineBlank />
-          )}
+          <div>
+            <TbPencil style={{ marginTop: "6px" }} />
+            <input
+              className={styles.heading}
+              value={task?.name}
+              onChange={(e) => setTask((p) => ({ ...p, name: e.target.value }))}
+            />
+            {task.isDone ? (
+              <MdOutlineCheckBox
+                onClick={() => setIsDone(false)}
+                style={{ cursor: "pointer" }}
+              />
+            ) : (
+              <MdOutlineCheckBoxOutlineBlank
+                onClick={() => setIsDone(true)}
+                style={{ cursor: "pointer" }}
+              />
+            )}
+          </div>
         </div>
-        <textarea
-          value={task?.description}
-          onChange={(e) =>
-            setTask((p) => ({ ...p, description: e.target.value }))
-          }
-        />
+        <div style={{ display: "flex" }}>
+          <TbPencil style={{ marginTop: "6px" }} />
+          <textarea
+            value={task?.description}
+            onChange={(e) =>
+              setTask((p) => ({ ...p, description: e.target.value }))
+            }
+          />
+        </div>
       </div>
 
       <div className={styles.ctaCnt}>

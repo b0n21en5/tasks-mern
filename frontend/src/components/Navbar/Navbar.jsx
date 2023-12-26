@@ -1,12 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
+  const path = useLocation().pathname;
+
   return (
     <div className={styles.navCnt}>
-      <Link to="/">Home</Link>
-      <Link to="/all-tasks">All Tasks</Link>
+      <Link to="/" className={path === "/" && styles.active}>
+        Home
+      </Link>
+      <Link to="/all-tasks" className={path === "/all-tasks" && styles.active}>
+        All Tasks
+      </Link>
     </div>
   );
 };

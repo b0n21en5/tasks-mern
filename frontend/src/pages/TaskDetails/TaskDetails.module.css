@@ -11,6 +11,7 @@
 .cnt .details {
   padding: 0.5rem 1rem;
   border: 1px solid grey;
+  border-radius: 4px;
 
   display: flex;
   flex-direction: column;
@@ -44,6 +45,7 @@
   padding: 0 1rem;
   color: white;
   background-color: red;
+  border-radius: 4px;
 
   display: flex;
   gap: 40px;
