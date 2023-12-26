@@ -9,15 +9,15 @@ import {
 
 const router = express.Router();
 
-router.post("/tasksto", addNewTask);
+router.post("/tasks", addNewTask);
 
 // query: isDone
-router.get("/tasksto", getAllTasks);
+router.get("/tasks", getAllTasks);
 
 router.get("/task-details/:taskid", singleTaskDetails);
 
-router.put("/tasks/:idto", updateTask);
+router.put("/tasks/:id", updateTask);
 
-router.delete("/tasks/:idto", deleteTask);
+router.delete("/tasks/:id", deleteTask);
 
 export default router;

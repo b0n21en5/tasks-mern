@@ -72,7 +72,7 @@ export const updateTask = async (req, res) => {
   try {
     const { name, isDone, description } = req.body;
 
-    const task = await taskModel.findById(req.params.idto);
+    const task = await taskModel.findById(req.params.id);
     if (!task) {
       return notFound(res, "No task found!");
     }
@@ -98,7 +98,7 @@ export const updateTask = async (req, res) => {
 // Delete task controller
 export const deleteTask = async (req, res) => {
   try {
-    const deletedTask = await taskModel.findByIdAndDelete(req.params.idto);
+    const deletedTask = await taskModel.findByIdAndDelete(req.params.id);
 
     return res.send({ message: "Task deleted successfully!", deletedTask });
   } catch (error) {
