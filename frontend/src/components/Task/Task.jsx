@@ -15,21 +15,15 @@ const Task = ({ task }) => {
     setIsDone(task.isDone);
   }, []);
 
-  const updateTask = async () => {
+  const updateTask = async (isTaskDone) => {
     try {
       const { data } = await axios.put(`${updateTaskRoute}/${task._id}`, {
-        isDone: isDone,
+        isDone: isTaskDone,
       });
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (isDone !== null) {
-      updateTask();
-    }
-  }, [isDone, task._id]);
 
   return (
     <Link className={styles.task} to={`/task-details/${task._id}`}>
@@ -40,6 +34,7 @@ const Task = ({ task }) => {
             e.preventDefault();
             e.stopPropagation();
             setIsDone(false);
+            updateTask(false);
           }}
         />
       ) : (
@@ -48,6 +43,7 @@ const Task = ({ task }) => {
             e.preventDefault();
             e.stopPropagation();
             setIsDone(true);
+            updateTask(true);
           }}
         />
       )}
