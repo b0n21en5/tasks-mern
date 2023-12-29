@@ -57,13 +57,6 @@ const TaskDetails = () => {
     }
   };
 
-  useEffect(() => {
-    if (isDone !== undefined)
-      handleUpdateTask({
-        isDone: isDone,
-      });
-  }, [isDone]);
-
   return (
     <div className={styles.cnt}>
       <div className={styles.details}>
@@ -77,12 +70,18 @@ const TaskDetails = () => {
             />
             {task.isDone ? (
               <MdOutlineCheckBox
-                onClick={() => setIsDone(false)}
+                onClick={() => {
+                  setIsDone(false);
+                  handleUpdateTask({ isDone: false });
+                }}
                 style={{ cursor: "pointer" }}
               />
             ) : (
               <MdOutlineCheckBoxOutlineBlank
-                onClick={() => setIsDone(true)}
+                onClick={() => {
+                  setIsDone(true);
+                  handleUpdateTask({ isDone: true });
+                }}
                 style={{ cursor: "pointer" }}
               />
             )}
